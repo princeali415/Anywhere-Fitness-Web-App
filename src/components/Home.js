@@ -80,12 +80,32 @@ const {logo, pic, pic2} = props
                 </div>
                 <div className='col2'>
                     <h3>Discover AF</h3>
+                    <ul>
+                        <li><a href='javascript:void(0)'>Locations</a></li>
+                        <li><a href='javascript:void(0)'>Lessons</a></li>
+                        <li><a href='javascript:void(0)'>Blog</a></li>
+                        <li><a href='javascript:void(0)'>FAQ</a></li>
+                        <li><a href='javascript:void(0)'>For Business</a></li>
+                    </ul>
                 </div>
                 <div className='col3'>
                     <h3>Company</h3>
+                    <ul>
+                        <li><a href='javascript:void(0)'>Our STory</a></li>
+                        <li><a href='javascript:void(0)'>Jobs</a></li>
+                        <li><a href='javascript:void(0)'>Partner Portal</a></li>
+                        <li><a href='javascript:void(0)'>Contact</a></li>
+                        
+                    </ul>
                 </div>
                 <div className='col4'>
                     <h3>Let's get social</h3>
+                    <ul>
+                        <li><a href='javascript:void(0)'>facebook icon</a></li>
+                        <li><a href='javascript:void(0)'>instagram icon</a></li>
+                        <li><a href='javascript:void(0)'>Youtube Icon</a></li>
+                        <li><a href='javascript:void(0)'>Linkedin icon</a></li>
+                    </ul>
                 </div>
                 <div className='col5'>
                     <h3>Download the app</h3>

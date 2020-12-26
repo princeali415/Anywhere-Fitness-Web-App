@@ -143,14 +143,37 @@
 
 footer{
     margin-bottom: 90px;
-    background: black;
+    background: #0d0d0d;
     color: white;
     margin-top: 0px;
     display: flex;
+    justify-content: center;
 }
 
 footer div {
     padding: 3%;
+    text-align: left;
+}
+
+footer div ul {
+    list-style: none;
+    padding-inline-start: 0px;
+    text-align: initial;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    line-height: 2;
+    font-size: 12px;
+}
+
+footer div ul a {
+    text-decoration: none;
+    color: hsla(0,0%,100%,.56);
+    transition: 0.2s all ease-in-out;
+}
+
+footer div ul a:hover {
+    color: white;
 }
 
 /* -------------Why Section ------------- */
