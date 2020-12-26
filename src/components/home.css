@@ -155,6 +155,11 @@ footer div {
     text-align: left;
 }
 
+footer div h3 {
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+
 footer div ul {
     list-style: none;
     padding-inline-start: 0px;
