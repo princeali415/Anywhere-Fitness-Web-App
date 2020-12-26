@@ -12,6 +12,8 @@ import fitnesspic from '../src/images/about-section-pic-1.png'
 import fitnesspic2 from '../src/images/why-section-pic.png'
 import homepic from '../src/images/fitnessfashion1.jpg'
 
+
+
 function App() {
 
   return (

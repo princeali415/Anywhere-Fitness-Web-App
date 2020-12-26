@@ -1,5 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import fb from '../images/icons8-facebook-circled-48.png'
+import ig from '../images/icons8-instagram-48.png'
+import youtube from '../images/icons8-play-button-48.png'
+import linkedin from '../images/icons8-linkedin-48.png'
+
 import './home.css'
 
 
@@ -101,14 +106,14 @@ const {logo, pic, pic2} = props
                 <div className='col4'>
                     <h3>Let's get social</h3>
                     <ul>
-                        <li><a href='javascript:void(0)'>facebook icon</a></li>
-                        <li><a href='javascript:void(0)'>instagram icon</a></li>
-                        <li><a href='javascript:void(0)'>Youtube Icon</a></li>
-                        <li><a href='javascript:void(0)'>Linkedin icon</a></li>
+                        <li><a href='javascript:void(0)'><img id='fb' src={fb} alt='fitness' /></a></li>
+                        <li><a href='javascript:void(0)'><img id='ig' src={ig} alt='ig-icon' /></a></li>
+                        <li><a href='javascript:void(0)'><img id='youtube' src={youtube} alt='yt-icon' /></a></li>
+                        <li><a href='javascript:void(0)'><img id='linkedin' src={linkedin} alt='li-icon' /></a></li>
                     </ul>
                 </div>
                 <div className='col5'>
-                    <h3>Download the app</h3>
+                    
                 </div>
             </footer>
             <div className='static-footer'>

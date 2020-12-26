@@ -181,6 +181,22 @@ footer div ul a:hover {
     color: white;
 }
 
+.col4 ul {
+    display: flex;
+}
+
+.col4 ul li {
+    padding-right: 3%;
+}
+
+.col4 ul li img {
+    width: 30px;
+    transition: 0.2s all ease-in-out;
+}
+
+.col4 ul li img:hover {
+    background-color: white;
+}
 /* -------------Why Section ------------- */
 
 
