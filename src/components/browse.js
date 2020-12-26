@@ -11,17 +11,17 @@ export default function Browse(props){
     return (
         <div className='browser-container'>
             <div className='filter-search-container'>
-                <div>dropdown1</div>
-                <div>dropdown2</div>
-                <div>dropdown3</div>
-                <div>dropdown4</div>
-                <div>dropdown5</div>
+                <div>dropdownFilter1</div>
+                <div>dropdownFilter2</div>
+                <div>dropdownFilter3</div>
+                <div>dropdownFilter4</div>
+                <div>dropdownFilter5</div>
             </div>
             <section className='results'>
             <div className='results-container'>
                 <div className='results-card-container'>
                     <div className='card-container'>
-                        {/* cards of the profile for each instructor goes here based on the search filters */}
+                        <p> cards of the fitness classes available goes here based on the search filters </p>
                     </div>
                 </div>
                 <div className='maps-container' id='map'>
