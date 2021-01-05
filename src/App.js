@@ -14,6 +14,7 @@ import homepic from '../src/images/fitnessfashion1.jpg'
 
 
 
+
 function App() {
 
   return (
@@ -38,6 +39,9 @@ function App() {
       <Route path='/browse'>
         <Browse />
       </Route>
+      {/* <Route path='/client-register' render={props => {
+                return <ClientRegister {...props}/>
+            }}>Client</Route> */}
     </div>
   );
 }
