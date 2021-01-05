@@ -41,7 +41,7 @@ function App() {
       </Route>
       {/* <Route path='/client-register' render={props => {
                 return <ClientRegister {...props}/>
-            }}>Client</Route> */}
+      }}/> */}
     </div>
   );
 }
