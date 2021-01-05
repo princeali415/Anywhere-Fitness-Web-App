@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, Route } from "react-router-dom";
-import ClientRegister from "./client-register";
 
 const initialFormValues = {
-  name: "",
   email: "",
   password: "",
   role: "",
-  tos: false,
 };
 
 const initialFormErrors = {
-  name: "",
   email: "",
   password: "",
 };
@@ -26,35 +22,30 @@ export default function SignIn(props) {
       ...newUser,
       role: e.target.value,
     });
-    console.log(newUser);
   };
 
   return (
     <div className="sign-in-container">
+      {console.log(newUser)}
       <div className="orange-bar">
         <h4>The World is Your Gym</h4>
         <h4>Welcome</h4>
       </div>
 
       {!newUser.role && (
-        <button value={2} onClick={handleClick}>
+        <button value={1} onClick={handleClick}>
           Client
         </button>
       )}
       
       {!newUser.role && (
-        <button value={1} onClick={handleClick}>
+        <button value={2} onClick={handleClick}>
           Instructor
         </button>
       )}
 
       {newUser.role && (
         <form className="form-container">
-          <label>
-            Name:
-            <input name="name" type="name" />
-          </label>
-          <br />
           <label>
             Email:
             <input name="email" type="email" />
