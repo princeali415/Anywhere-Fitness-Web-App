@@ -18,7 +18,7 @@ const initialFormErrors = {
 
 const initialDisabled = true;
 
-export default function SignIn(props) {
+export default function SignUp(props) {
   // const [formValues, setNewformValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(initialDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);

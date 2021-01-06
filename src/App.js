@@ -4,13 +4,14 @@ import axios from 'axios'
 import { Link, Route } from 'react-router-dom'
 import schema from '../src/schema/schema'
 import Home from '../src/components/Home.js'
-import SignIn from '../src/components/sign-in'
+import SignIn from './components/SignIn'
 import Browse from '../src/components/browse'
 import './App.css';
 import logo from '../src/images/logo-cropped2.png'
 import fitnesspic from '../src/images/about-section-pic-1.png'
 import fitnesspic2 from '../src/images/why-section-pic.png'
 import homepic from '../src/images/fitnessfashion1.jpg'
+import SignUp from "./components/Register";
 
 
 
@@ -28,13 +29,17 @@ function App() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='/help'>Help</Link>
-        <Link to='/sign-in'>Sign In</Link>
+        <Link to='/Sign-In'>Sign In</Link>
+        <Link to='/Register'>Register</Link>
       </nav>
       </div>
       <Route exact path='/'>
         <Home logo={logo} homepic={homepic} pic={fitnesspic} pic2={fitnesspic2} />
       </Route>
-      <Route path='/sign-in'>
+      <Route path='/Register'>
+        <SignUp/>
+      </Route>
+      <Route path='/Sign-In'>
         <SignIn />
       </Route>
       <Route path='/browse'>
