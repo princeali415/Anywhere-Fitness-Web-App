@@ -86,30 +86,30 @@ const {logo, pic, pic2} = props
                 <div className='col2'>
                     <h3>Discover AF</h3>
                     <ul>
-                        <li><a href='javascript:void(0)'>Locations</a></li>
+                        {/* <li><a href='javascript:void(0)'>Locations</a></li>
                         <li><a href='javascript:void(0)'>Lessons</a></li>
                         <li><a href='javascript:void(0)'>Blog</a></li>
                         <li><a href='javascript:void(0)'>FAQ</a></li>
-                        <li><a href='javascript:void(0)'>For Business</a></li>
+                        <li><a href='javascript:void(0)'>For Business</a></li> */}
                     </ul>
                 </div>
                 <div className='col3'>
                     <h3>Company</h3>
                     <ul>
-                        <li><a href='javascript:void(0)'>Our STory</a></li>
+                        {/* <li><a href='javascript:void(0)'>Our STory</a></li>
                         <li><a href='javascript:void(0)'>Jobs</a></li>
                         <li><a href='javascript:void(0)'>Partner Portal</a></li>
-                        <li><a href='javascript:void(0)'>Contact</a></li>
+                        <li><a href='javascript:void(0)'>Contact</a></li> */}
                         
                     </ul>
                 </div>
                 <div className='col4'>
                     <h3>Let's get social</h3>
                     <ul>
-                        <li><a href='javascript:void(0)'><img id='fb' src={fb} alt='fitness' /></a></li>
+                        {/* <li><a href='javascript:void(0)'><img id='fb' src={fb} alt='fitness' /></a></li>
                         <li><a href='javascript:void(0)'><img id='ig' src={ig} alt='ig-icon' /></a></li>
                         <li><a href='javascript:void(0)'><img id='youtube' src={youtube} alt='yt-icon' /></a></li>
-                        <li><a href='javascript:void(0)'><img id='linkedin' src={linkedin} alt='li-icon' /></a></li>
+                        <li><a href='javascript:void(0)'><img id='linkedin' src={linkedin} alt='li-icon' /></a></li> */}
                     </ul>
                 </div>
                 <div className='col5'>

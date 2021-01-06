@@ -66,11 +66,6 @@ export default function SignUp(props) {
     })
   }, [formValues])
 
-
-
-
-  
-  
   //Helper Functions  
   const onSubmit = evt => {
     evt.preventDefault();
