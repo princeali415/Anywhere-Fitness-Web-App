@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, Route } from "react-router-dom";
 import * as yup from 'yup'
 import axios from 'axios'
-import schema from '../src/schema/schema'
+import schema from '../schema/schema'
 
 const initialFormValues = {
   email: "",
   password: "",
+  role: null,
 };
 
 const initialFormErrors = {
@@ -14,92 +15,106 @@ const initialFormErrors = {
   password: "",
 };
 
-// const initialUser = []; not sure what this is for
 
 const initialDisabled = true;
 
 export default function SignIn(props) {
-  const [newUser, setNewUser] = useState(initialFormValues);
+  // const [formValues, setNewformValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(initialDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
-  const updateForm = (name, value) => {
-    yup.reach(schema, name).validate(value).then(() => {
+  
+  const updateForm = (type, value) => {
+    yup.reach(schema, type).validate(value).then(() => {
       setFormErrors({
-        ...formErrors, [name]: '',
+        ...formErrors, [type]: '',
       })
     })
     .catch((err) => {
       setFormErrors({
-         ...formErrors, [name]: err.errors[0],
+        ...formErrors, [type]: err.errors[0],
       })
     })
-    setFormValues({...formValues, [name]: value})
+    setFormValues({...formValues, [type]: value});
+  };
+  
+  const handleClick = (evt) => {
+    setFormValues({
+      ...formValues,
+      role: parseInt(evt.target.value),
+    });
+  };
+  const submitForm = () => {
+     postNewformValues(formValues)
   };
 
-  const submitForm = evt => {
-    const newUser = {
-      email: formValues.email.trim(),
-      password: formValues.password.trim(),
-    };
-    postNewUser(newUser)
-  };
+  const postNewformValues = formValues => {
+    axios.post('https://fitness-anywhere-app.herokuapp.com/api/users/register', formValues).then(res =>{
 
-  const getUser = () => {
-    axios.get('').then(res => {
-      console.log(res.data)
-      setNewUser(res.data.data);
-      setFormValues(initialFormValues);
+      console.log(res);
     })
     .catch(err => {
       console.log(err);
+      console.log(formValues)
     })
   }
 
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => {
+      setDisabled(!valid);
+    })
+  }, [formValues])
 
 
-  const handleClick = (e) => {
-    setNewUser({
-      ...newUser,
-      role: e.target.value,
-    });
+
+
   
-  };
   
+  //Helper Functions  
+  const onSubmit = evt => {
+    evt.preventDefault();
+    submitForm();
+    {console.log(formValues)}
+  }
+  const update = (evt) => {
+    const {type, value} = evt.target;
+    updateForm(type, value);
+  }
 
   return (
-    <div className="sign-in-container">
+    <div className="sign-in-container" onSubmit={onSubmit}>
+      
       <div className="orange-bar">
         <h4>The World is Your Gym</h4>
         <h4>Welcome</h4>
       </div>
 
-      {!newUser.role && (
+      {!formValues.role && (
         <button value={2} onClick={handleClick}>
           Client
         </button>
       )}
       
-      {!newUser.role && (
+      {!formValues.role && (
         <button value={1} onClick={handleClick}>
           Instructor
         </button>
       )}
 
-      {newUser.role && (
-        <form className="form-container">
+      {formValues.role && (
+        <form className="form-container" >
           <label>
             Email:
-            <input name="email" type="email" />
+            <input name="email" type="email" value={formValues.email} onChange={update}/>
           </label>
           <br />
           <label>
             Password:
-            <input name="password" type="password" />
+            <input name="password" type="password" value={formValues.password} onChange={update}/>
           </label>
           <br/>
-            <button>Submit</button>
+            <button disabled={disabled}>Submit</button>
             
         </form>
       )}
