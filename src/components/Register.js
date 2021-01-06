@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as yup from 'yup'
 import axios from 'axios'
 import schema from '../schema/schema'
@@ -24,6 +24,7 @@ export default function SignUp(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+  const history = useHistory();
   
   const updateForm = (type, value) => {
     yup.reach(schema, type).validate(value).then(() => {
@@ -46,7 +47,8 @@ export default function SignUp(props) {
     });
   };
   const submitForm = () => {
-     postNewformValues(formValues)
+     postNewformValues(formValues);
+     history.push("/signin");
   };
 
   const postNewformValues = formValues => {
