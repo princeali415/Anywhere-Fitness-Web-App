@@ -20,6 +20,12 @@ import PrivateRoute from "./utils/PrivateRoute";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const userLogout = () => {
+    localStorage.removeItem('token');
+    alert('You were successfully logged out!')
+    setIsLoggedIn(false);
+  }
+
   return (
     <Router>
       <div className="App">
@@ -34,6 +40,7 @@ function App() {
           {!isLoggedIn && <Link to='/signin'>Sign In</Link>}
           {!isLoggedIn && <Link to='/register'>Register</Link>}
           {isLoggedIn && <Link to='/new-class'>New Class</Link>}
+          {isLoggedIn && <Link to='/signin' onClick={() => userLogout()}>Log Out</Link>}
         </nav>
         </div>
         <Switch>
