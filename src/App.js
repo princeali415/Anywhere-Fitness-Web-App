@@ -12,6 +12,7 @@ import fitnesspic from '../src/images/about-section-pic-1.png'
 import fitnesspic2 from '../src/images/why-section-pic.png'
 import homepic from '../src/images/fitnessfashion1.jpg'
 import SignUp from "./components/Register";
+import CreateClass from "./components/CreateClass/CreateClass";
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Link to='/help'>Help</Link>
         <Link to='/Sign-In'>Sign In</Link>
         <Link to='/Register'>Register</Link>
+        <Link to='/new-class'>New Class</Link>
       </nav>
       </div>
       <Route exact path='/'>
@@ -44,6 +46,9 @@ function App() {
       </Route>
       <Route path='/browse'>
         <Browse />
+      </Route>
+      <Route path='/new-class'>
+        <CreateClass />
       </Route>
       {/* <Route path='/client-register' render={props => {
                 return <ClientRegister {...props}/>
