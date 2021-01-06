@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import schema from "../schema/schema";
+import { connect } from "react-redux";
+import { setUser } from "../actions/index";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialFormValues = {
   email: "",
@@ -15,14 +18,12 @@ const initialFormErrors = {
 };
 const initialDisabled = true;
 
-export default function SignIn(props) {
+function SignIn(props) {
   const [disabled, setDisabled] = useState(initialDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
   const history = useHistory();
-
-  const { setIsLoggedIn } = props;
 
   const updateForm = (type, value) => {
     yup
@@ -48,17 +49,17 @@ export default function SignIn(props) {
   };
 
   const checkUser = (loginInfo) => {
-    axios
+    axiosWithAuth()
       .post(
-        "https://fitness-anywhere-app.herokuapp.com/api/users/login",
+        "/api/users/login",
         loginInfo
       )
       .then((res) => {
-        setIsLoggedIn(true);
-        localStorage.setItem('token', res.data.token);
+        props.setIsLoggedIn(true);
+        localStorage.setItem("token", res.data.token);
+        props.setUser(res.data.user);
         setFormValues(initialFormValues);
         history.push("/");
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -75,9 +76,6 @@ export default function SignIn(props) {
   const onSubmit = (evt) => {
     evt.preventDefault();
     submitForm();
-    {
-      console.log(formValues);
-    }
   };
   const update = (evt) => {
     const { type, value } = evt.target;
@@ -116,3 +114,5 @@ export default function SignIn(props) {
     </div>
   );
 }
+
+export default connect(null, { setUser })(SignIn);
