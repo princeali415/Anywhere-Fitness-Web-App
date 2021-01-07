@@ -129,8 +129,12 @@ export default function SignUp(props) {
               onChange={update}
             />
           </label>
-          <br />
-          <button disabled={disabled}>Submit</button>
+          <br/>
+            <button disabled={disabled}>Submit</button>
+            <div className='errors'>
+              <div>{formErrors.email}</div>
+              <div>{formErrors.password}</div>
+            </div>
         </form>
       )}
     </div>
