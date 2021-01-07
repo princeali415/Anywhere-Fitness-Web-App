@@ -50,10 +50,7 @@ function SignIn(props) {
 
   const checkUser = (loginInfo) => {
     axiosWithAuth()
-      .post(
-        "/api/users/login",
-        loginInfo
-      )
+      .post("/api/users/login", loginInfo)
       .then((res) => {
         props.setIsLoggedIn(true);
         localStorage.setItem("token", res.data.token);

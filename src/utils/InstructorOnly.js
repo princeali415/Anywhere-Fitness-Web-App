@@ -2,9 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-// 1. It copies exactly the functionality of Route.
-// 2. It renders a passed in route component if the user is authenticated.
-// 3. It redirects to login in the user is not authenticated
+// It redirects to the landing page if in the user is not an Instructor
 
 const InstructorOnly = ({ component: Component, user, ...rest }) => {
   return (
@@ -21,15 +19,15 @@ const InstructorOnly = ({ component: Component, user, ...rest }) => {
   );
 };
 
-const mapStateToProps = state => {
-    return {
-        user: {
-          email: state.user.email,
-          password: state.user.password,
-          role: state.user.role,
-          id: state.user.id,
-        },
-    };
-}
+const mapStateToProps = (state) => {
+  return {
+    user: {
+      email: state.user.email,
+      password: state.user.password,
+      role: state.user.role,
+      id: state.user.id,
+    },
+  };
+};
 
 export default connect(mapStateToProps)(InstructorOnly);

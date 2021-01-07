@@ -11,7 +11,6 @@ const initialState = {
     isLoading: true
 }
 
-
 export const reducer = (state=initialState, action) => {
     switch(action.type) {
         case SET_USER:
