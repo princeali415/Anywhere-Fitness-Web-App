@@ -115,6 +115,10 @@ export default function SignUp(props) {
           </label>
           <br/>
             <button disabled={disabled}>Submit</button>
+            <div className='errors'>
+              <div>{formErrors.email}</div>
+              <div>{formErrors.password}</div>
+            </div>
             
         </form>
       )}
