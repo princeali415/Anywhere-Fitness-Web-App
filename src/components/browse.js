@@ -3,11 +3,7 @@ import './browse.css'
 import Map from './map/map.js'
 
 
-
 export default function Browse(props){
-    
-  
-
     return (
         <div className='browser-container'>
             <div className='filter-search-container'>
@@ -26,7 +22,6 @@ export default function Browse(props){
                 </div>
                 <div className='maps-container' id='map'>
                    <Map  />
-                
                 </div>
             </div>
             </section>
