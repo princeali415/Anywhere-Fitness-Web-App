@@ -2,9 +2,6 @@ import React from 'react'
 
 
 export default function Class(props) {
-
-
-
     return (
         <div className=' class-container'>
             <div className='image-container'>

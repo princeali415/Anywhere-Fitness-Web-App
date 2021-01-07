@@ -14,19 +14,20 @@ import CreateClass from "./components/CreateClass/CreateClass";
 import PrivateRoute from "./utils/PrivateRoute";
 import InstructorOnly from "./utils/InstructorOnly";
 import { connect } from "react-redux";
-// import { setUser } from "./actions/index";
+import { setUser, setUserFromStorage } from "./actions/index";
 
-function App({ user }) {
+function App({ setUser, user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
     }
-  }, [])
+  }, []);
 
   const userLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     alert("You were successfully logged out!");
     setIsLoggedIn(false);
   };
@@ -76,7 +77,7 @@ function App({ user }) {
               return <SignIn {...props} setIsLoggedIn={setIsLoggedIn} />;
             }}
           />
-          <PrivateRoute path="/browse" component={Browse} />
+          <Route path="/browse" component={Browse} />
           <InstructorOnly user={user} path="/new-class" component={CreateClass} />
         </Switch>
       </div>
@@ -86,8 +87,8 @@ function App({ user }) {
 const mapStateToProps = (state) => {
   return {
     user: {
-      email: state.user.email,
       password: state.user.password,
+      email: state.user.email,
       role: state.user.role,
       id: state.user.id,
     },
