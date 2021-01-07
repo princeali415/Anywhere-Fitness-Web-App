@@ -54,6 +54,7 @@ function SignIn(props) {
       .then((res) => {
         props.setIsLoggedIn(true);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         props.setUser(res.data.user);
         setFormValues(initialFormValues);
         history.push("/");
