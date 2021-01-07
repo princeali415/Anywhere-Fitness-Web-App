@@ -1,3 +1,13 @@
 .card-container {
     overflow-y: overlay;
 }
+
+.class-info {
+    display: flex;
+}
+.card-title {
+ width: 10vw;
+}
+.class-description {
+    width: 20vw;
+}

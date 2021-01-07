@@ -18,11 +18,11 @@ export default function Class(props) {
                     <h3>{details.type}</h3>
                 </div>
                 <div className='class-description'>
-                    <p>{details.start_time}</p>
-                    <p>{details.duration}</p>
-                    <p>{details.intensity_level}</p>
-                    <p>{details.location}</p>
-                    <p>{details.max_class_size}</p>
+                    <p>Start Time: {details.start_time}</p>
+                    <p>Duration: {details.duration}</p>
+                    <p>Difficulty: {details.intensity_level}</p>
+                    <p>Location: {details.location}</p>
+                    <p>Max Class Size: {details.max_class_size}</p>
                 </div>
             </div>
             
