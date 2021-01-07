@@ -57,12 +57,12 @@ export default function CreateClass() {
   return (
     <div>
       <Classform values={formValues} update={updateForm} submit={submitForm} />
-    <div>
+    {/* <div>
       <h2>My Classes</h2>
       {classes.map((c) => {
         return <Class key={c.id} details={c} />;
       })}
-    </div>
+    </div> */}
     </div>
   );
 }
