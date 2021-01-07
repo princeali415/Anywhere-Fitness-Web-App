@@ -3,6 +3,7 @@ import Classform from "./Classform";
 import Class from "./Class";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
+
 const initialFormValues = {
   name: "",
   type: "",
@@ -47,9 +48,21 @@ export default function CreateClass() {
       });
   };
 
+  useEffect(() => {
+    axiosWithAuth().get("/api/classes ")
+    .then((res) => setClasses(res.data));
+  }, []);
+
+
   return (
     <div>
       <Classform values={formValues} update={updateForm} submit={submitForm} />
+    <div>
+      <h2>My Classes</h2>
+      {classes.map((c) => {
+        return <Class key={c.id} details={c} />;
+      })}
+    </div>
     </div>
   );
 }

@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './browse.css'
 import Map from './map/map.js'
+import Class from '../components/CreateClass/Class'
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+
 
 
 export default function Browse(props){
+
+    const [classes, setClasses] = useState([]);
+
+    useEffect(() => {
+        axiosWithAuth().get("/api/classes ")
+        .then((res) => setClasses(res.data));
+      }, []);
+    
+
     return (
         <div className='browser-container'>
             <div className='filter-search-container'>
@@ -17,7 +30,9 @@ export default function Browse(props){
             <div className='results-container'>
                 <div className='results-card-container'>
                     <div className='card-container'>
-                        <p> cards of the fitness classes available goes here based on the search filters </p>
+                    {classes.map((c) => {
+                    return <Class key={c.id} details={c} />;
+                    })}
                     </div>
                 </div>
                 <div className='maps-container' id='map'>
