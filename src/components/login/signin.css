@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100vw;
+    width: 100%;
 
 }
 .orange-bar {
-    width: 100vw;
+    width: 100%;
 }
 .register-container {
     margin-top: 5rem;;

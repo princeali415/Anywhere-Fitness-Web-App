@@ -75,6 +75,7 @@ nav a:hover:after {
   background-color: orange;
   padding: 1px;
   color: #333333;
+  max-width: 100%;
 
 }
 
@@ -90,7 +91,7 @@ nav a:hover:after {
   position: fixed;
   bottom:0;
   left:0;
-  width:100%;
+  width:100vw;
   height: 90px;
   background: linear-gradient(135deg, #ce9ffc 0%, #7367f0 100%);
   display: flex;
