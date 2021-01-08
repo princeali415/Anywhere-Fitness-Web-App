@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import fb from '../images/icons8-facebook-circled-48.png'
 import ig from '../images/icons8-instagram-48.png'
 import youtube from '../images/icons8-play-button-48.png'
 import linkedin from '../images/icons8-linkedin-48.png'
-
+import { useHistory } from "react-router-dom";
 import './home.css'
 
 
 
 export default function Home(props){
 const {logo, pic, pic2} = props
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const history = useHistory();
+
+const handleRegister = () => {
+    history.push("/register")
+};
+
+useEffect(() => {
+  if (localStorage.getItem("token")) {
+    setIsLoggedIn(true);
+  }
+}, []);
 
     return(
         <div className='home-page'>
@@ -116,12 +128,12 @@ const {logo, pic, pic2} = props
                     
                 </div>
             </footer>
-            <div className='static-footer'>
+            {!isLoggedIn && <div className='static-footer'>
                 <div className='btn-container'>
-                    <button className='for-user-type-client'>For Clients</button>
-                    <button className='for-user-type-instructor'>For Instructors</button>
+                    <button className='for-user-type-client' onClick={handleRegister} >Register Here</button>
+                    {/* <button className='for-user-type-instructor'>For Instructors</button> */}
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

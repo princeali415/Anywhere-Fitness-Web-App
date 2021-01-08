@@ -2,24 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-import schema from "../schema/schema";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import schema from "../../schema/schema";
+import { connect } from "react-redux";
+import { setUser } from "../../actions/index";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
+
+import "./signin.css";
 
 const initialFormValues = {
   email: "",
   password: "",
-  role: null,
 };
 
 const initialFormErrors = {
   email: "",
   password: "",
 };
-
 const initialDisabled = true;
 
-export default function SignUp(props) {
-  // const [formValues, setNewformValues] = useState(initialFormValues);
+function SignIn(props) {
   const [disabled, setDisabled] = useState(initialDisabled);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -45,25 +46,24 @@ export default function SignUp(props) {
     setFormValues({ ...formValues, [type]: value });
   };
 
-  const handleClick = (evt) => {
-    setFormValues({
-      ...formValues,
-      role: parseInt(evt.target.value),
-    });
-  };
   const submitForm = () => {
-    postNewformValues(formValues);
-    history.push("/signin");
+    checkUser(formValues);
   };
 
-  const postNewformValues = (userInfo) => {
+  const handleRegister = () => {
+    history.push("/register");
+  };
+
+  const checkUser = (loginInfo) => {
     axiosWithAuth()
-      .post(
-        "/api/users/register",
-        userInfo
-      )
+      .post("/api/users/login", loginInfo)
       .then((res) => {
-        console.log(res);
+        props.setIsLoggedIn(true);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        props.setUser(res.data.user);
+        setFormValues(initialFormValues);
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -80,9 +80,6 @@ export default function SignUp(props) {
   const onSubmit = (evt) => {
     evt.preventDefault();
     submitForm();
-    {
-      console.log(formValues);
-    }
   };
   const update = (evt) => {
     const { type, value } = evt.target;
@@ -95,21 +92,8 @@ export default function SignUp(props) {
         <h4>The World is Your Gym</h4>
         <h4>Welcome</h4>
       </div>
-
-      {!formValues.role && (
-        <button value={2} onClick={handleClick}>
-          Client
-        </button>
-      )}
-
-      {!formValues.role && (
-        <button value={1} onClick={handleClick}>
-          Instructor
-        </button>
-      )}
-
-      {formValues.role && (
-        <form className="form-container">
+      <form className="login-register-container">
+        <div className="input-container">
           <label>
             Email:
             <input
@@ -129,14 +113,13 @@ export default function SignUp(props) {
               onChange={update}
             />
           </label>
-          <br/>
-            <button disabled={disabled}>Submit</button>
-            <div className='errors'>
-              <div>{formErrors.email}</div>
-              <div>{formErrors.password}</div>
-            </div>
-        </form>
-      )}
+        </div>
+        <br />
+        <button disabled={disabled}>Sign In</button>
+        <button className="register-button" onClick={handleRegister}>Create Account</button>
+      </form>
     </div>
   );
 }
+
+export default connect(null, { setUser })(SignIn);

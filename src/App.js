@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import Home from "../src/components/Home.js";
-import SignIn from "./components/SignIn";
+import SignIn from "./components/login/SignIn";
 import Browse from "../src/components/browse";
 import "./App.css";
 import logo from "../src/images/logo-cropped2.png";
 import fitnesspic from "../src/images/about-section-pic-1.png";
 import fitnesspic2 from "../src/images/why-section-pic.png";
 import homepic from "../src/images/fitnessfashion1.jpg";
-import Register from "./components/Register";
+import Register from "./components/registration/Register";
 import CreateClass from "./components/CreateClass/CreateClass";
 
 import PrivateRoute from "./utils/PrivateRoute";
@@ -50,7 +50,7 @@ function App({ setUser, user }) {
             <Link to="/">Home</Link>
             <Link to="/help">Help</Link>
             {!isLoggedIn && <Link to="/signin">Sign In</Link>}
-            {!isLoggedIn && <Link to="/register">Register</Link>}
+            {/* {!isLoggedIn && <Link to="/register">Register</Link>} */}
             {isLoggedIn && user.role === 1 && (
               <Link to="/new-class">New Class</Link>
             )}
@@ -77,7 +77,7 @@ function App({ setUser, user }) {
               return <SignIn {...props} setIsLoggedIn={setIsLoggedIn} />;
             }}
           />
-          <Route path="/browse" component={Browse} />
+          <PrivateRoute path="/browse" component={Browse} />
           <InstructorOnly user={user} path="/new-class" component={CreateClass} />
         </Switch>
       </div>

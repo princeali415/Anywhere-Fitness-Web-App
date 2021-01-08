@@ -12,7 +12,7 @@ export default function Browse(props){
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        axiosWithAuth().get("/api/classes ")
+        axiosWithAuth().get("/api/classes")
         .then((res) => setClasses(res.data));
       }, []);
     
