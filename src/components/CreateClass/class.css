@@ -2,6 +2,12 @@
     overflow-y: overlay;
 }
 
+.class-container {
+   border: solid #ce9ffc 2px;
+   margin: 2%;
+   padding: 2%;
+}
+
 .class-info {
     display: flex;
 }
