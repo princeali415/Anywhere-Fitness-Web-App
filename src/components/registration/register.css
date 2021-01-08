@@ -1,14 +1,3 @@
-.sign-in-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100vw;
-
-}
-.orange-bar {
-    width: 100vw;
-}
 .login-register-container {
     margin-top: 5rem;;
     display: flex;
